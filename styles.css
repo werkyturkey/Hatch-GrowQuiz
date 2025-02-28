@@ -1,134 +1,153 @@
-/* Reset */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* General Styles */
-  body {
+/* General Styles */
+body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #e0f7fa, #e1bee7);
+    background-color: #f9f9f9;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-  }
-  
-  #container {
-    width: 90%;
-    max-width: 800px;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  /* Pet Image Section */
-  #pet-container {
-    margin-bottom: 20px;
-  }
-  
-  #pet-image {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Quiz Section */
-  #quiz-container {
-    background: linear-gradient(45deg, #5a92ff, #0078d4);
-    border-radius: 20px;
-    padding: 20px;
-    color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-  }
-  
-  #quiz-content h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
-  }
-  
-  #quiz-content ul {
-    list-style: none;
-    margin: 0 auto;
-    padding: 0;
-    max-width: 500px;
-  }
-  
-  #quiz-content li {
-    background: #fff;
-    color: #333;
-    margin: 10px 0;
-    padding: 12px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-  }
-  
-  #quiz-content li:hover {
-    background: #ff8ec7;
-    transform: translateY(-3px);
-  }
-  
-  input[type="radio"] {
-    margin-right: 10px;
-  }
-  
-  /* Next Button */
-  #next-button {
-    background: #ff69b4;
-    border: none;
-    border-radius: 30px;
-    padding: 12px 30px;
-    font-size: 16px;
-    color: #fff;
-    cursor: pointer;
-    margin-top: 15px;
-    transition: background 0.3s, transform 0.3s;
-  }
-  
-  #next-button:hover {
-    background: #ff8ec7;
-    transform: scale(1.05);
-  }
-  
-  /* Results Section */
-  #results {
-    background: #fff;
-    border-radius: 20px;
-    padding: 20px;
-    color: #333;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-    text-align: left;
-  }
-  
-  #results h3 {
-    margin-bottom: 10px;
-  }
-  
-  #results p {
-    margin: 10px 0;
-  }
-  
-  /* Restart Button inside results */
-  #restart-button {
-    background: #5a92ff;
-    border: none;
-    border-radius: 30px;
-    padding: 12px 30px;
-    font-size: 16px;
-    color: #fff;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
-    margin-top: 15px;
-  }
-  
-  #restart-button:hover {
-    background: #0078d4;
-    transform: scale(1.05);
-  }
+    height: 100vh;
+    margin: 0;
+    background-image: linear-gradient(to top left, #f9f9f9, #cce7ff);
+}
 
-  
+/* Quiz Container */
+#quiz-container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+    border: 10px solid #ff66b2; /* Tamagotchi-style border color */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Pet Image (Fixed size for question and result) */
+#pet-container img, #result-pet-image {
+    width: 100%; /* Full width of the page */
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 10px; /* Rounded corners for the pet image */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow effect for the image */
+}
+
+/* Question Title */
+h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Question and Options */
+#question-container {
+    margin-bottom: 30px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background-color: #5a92ff;
+    color: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 18px; /* Bigger font for the options */
+    width: 100%;
+    text-align: left; /* Make text left-aligned for more fun */
+    padding-left: 15px; /* Add space from the left */
+}
+
+/* When Option is Hovered */
+li:hover {
+    background-color: #4789db;
+    transform: translateY(-5px);
+}
+
+/* Button */
+button {
+    background-color: #ff66b2;  /* Pink Button */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #e65d94;
+    transform: scale(1.05);
+}
+
+#next-btn {
+    display: none;
+    margin-top: 20px;
+}
+
+#restart-btn {
+    display: none;
+    margin-top: 20px;
+}
+
+/* Button clicked animation */
+.selected {
+    background-color: #e65d94; /* Pink on selected */
+    transform: scale(1.05);
+    animation: sparkle 1s ease infinite; /* Sparkle animation */
+    color: white !important; /* Keep text white */
+}
+
+/* Sparkle Animation for Selected Option */
+@keyframes sparkle {
+    0% { color: #ff66b2; text-shadow: 0 0 3px #ff66b2, 0 0 5px #ff66b2, 0 0 10px #ff66b2; }
+    100% { color: #ff66b2; text-shadow: 0 0 10px #ff66b2, 0 0 15px #ff66b2, 0 0 20px #ff66b2; }
+}
+
+/* Results Section */
+#results {
+    background-color: #f7f7f7;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border: 8px solid #ff66b2;
+}
+
+#results img {
+    width: 40%;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+#results p {
+    font-size: 18px;
+    color: #333;
+}
+
+#restart-btn {
+    background-color: #ff66b2;
+    color: white;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#restart-btn:hover {
+    background-color: #e65d94;
+}
+
+
+

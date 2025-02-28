@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pet Quiz</title>
-  <!-- Optional: Google Font for Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Quiz</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="container">
-    <!-- Pet Image Section -->
-    <div id="pet-container">
-      <img id="pet-image" src="pet1.jpg" alt="Pet Image" />
-    </div>
 
-    <!-- Quiz Section -->
     <div id="quiz-container">
-      <div id="quiz-content">
-        <!-- Quiz questions and options will be injected here -->
-      </div>
-      <button id="next-button" onclick="nextQuestion()">Next Question</button>
+        <!-- Pet Image (Only displayed once at the top) -->
+        <div id="pet-container">
+            <img src="pet1.jpg" alt="Cute Pet" id="pet-image">
+        </div>
+
+        <div id="question-container">
+            <h2 id="question-title">How do you approach challenges at work?</h2>
+            <ul id="options-list">
+                <li class="option" onclick="selectOption(this)">I tackle challenges head-on</li>
+                <li class="option" onclick="selectOption(this)">I think things through before taking action</li>
+                <li class="option" onclick="selectOption(this)">I like to seek advice from others</li>
+                <li class="option" onclick="selectOption(this)">I prefer to work on smaller tasks first</li>
+            </ul>
+            <button id="next-btn" onclick="nextQuestion()">Next Question</button>
+        </div>
     </div>
 
-    <!-- Results Section -->
-    <div id="results">
-      <!-- Quiz results will appear here after completion -->
+    <div id="results" style="display: none;">
+        <h2>Your Results</h2>
+        <img src="pet1.jpg" alt="Your Pet" id="result-pet-image">
+        <p>Based on your answers, your working style aligns with a highly proactive approach. You're always ready to take on challenges with confidence!</p>
+        <button id="restart-btn" onclick="restartQuiz()">Restart Quiz</button>
     </div>
-  </div>
 
-  <script src="app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
 

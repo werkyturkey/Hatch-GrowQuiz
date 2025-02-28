@@ -1,84 +1,71 @@
-let currentQuestionIndex = 0;
-
+let currentQuestion = 0;
 const questions = [
-  {
-    question: "How do you approach challenges at work?",
-    options: ["Logical and structured", "Creative and open-minded", "Data-driven and analytical", "Hands-on and practical"],
-    answer: null
-  },
-  {
-    question: "When faced with a new tool or technology, how do you typically learn to use it?",
-    options: ["I read documentation and manuals", "I watch tutorials and videos", "I experiment and explore on my own", "I ask for help from others"],
-    answer: null
-  },
-  {
-    question: "How do you prioritize tasks in your daily work?",
-    options: ["By deadlines and urgency", "By the importance and impact", "Based on data and metrics", "By personal preference and ease of execution"],
-    answer: null
-  },
-  {
-    question: "What’s your preferred way to work in a team?",
-    options: ["I like to lead and organize", "I prefer to collaborate and brainstorm ideas", "I rely on data and analytics to guide decisions", "I take a practical, hands-on approach to get things done"],
-    answer: null
-  },
-  {
-    question: "Which skill would you like to develop further for future growth?",
-    options: ["Data Literacy", "AI Literacy", "Digital Tool Literacy", "Robotic Process Automation (RPA)"],
-    answer: null
-  }
+    {
+        question: "How do you approach challenges at work?",
+        options: ["I tackle challenges head-on", "I think things through before taking action", "I like to seek advice from others", "I prefer to work on smaller tasks first"]
+    },
+    {
+        question: "What's your preferred working style?",
+        options: ["I work best alone", "I prefer collaborating with others", "I take frequent breaks", "I thrive in a fast-paced environment"]
+    },
+    {
+        question: "How do you manage your time at work?",
+        options: ["I make to-do lists", "I work on tasks as they come", "I prioritize tasks", "I delegate tasks"]
+    },
+    {
+        question: "How do you deal with tight deadlines?",
+        options: ["I stay calm and focused", "I ask for an extension", "I rush to finish as quickly as possible", "I plan my work in advance"]
+    },
+    {
+        question: "How do you feel about taking on new tasks?",
+        options: ["I love learning new things", "I feel nervous but try", "I need some encouragement", "I prefer to stick to what I know"]
+    }
 ];
 
-function showQuestion() {
-  const quizContent = document.getElementById("quiz-content");
-  const currentQuestion = questions[currentQuestionIndex];
-  
-  // Build the question header and options wrapped in labels
-  quizContent.innerHTML = `
-    <h2>${currentQuestion.question}</h2>
-    <ul>
-      ${currentQuestion.options.map((option, index) =>
-        `<li>
-           <label for="option-${index}">
-             <input type="radio" id="option-${index}" name="answer" value="${option}" onclick="selectAnswer('${option}')">
-             ${option}
-           </label>
-         </li>`
-      ).join('')}
-    </ul>
-  `;
+function loadQuestion() {
+    const question = questions[currentQuestion];
+    const questionTitle = document.getElementById('question-title');
+    const optionsList = document.getElementById('options-list');
+    questionTitle.innerHTML = question.question;
+    optionsList.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = option;
+        li.setAttribute('data-index', index);
+        li.onclick = selectOption;
+        optionsList.appendChild(li);
+    });
+    document.getElementById('next-btn').style.display = 'none';
 }
 
-function selectAnswer(answer) {
-  questions[currentQuestionIndex].answer = answer;
+function selectOption(event) {
+    const selectedOption = event.target;
+    const options = document.querySelectorAll('.option');
+    options.forEach(option => option.classList.remove('selected'));
+    selectedOption.classList.add('selected');
+    document.getElementById('next-btn').style.display = 'inline-block';
 }
 
 function nextQuestion() {
-  if (currentQuestionIndex < questions.length - 1) {
-    currentQuestionIndex++;
-    showQuestion();
-  } else {
-    displayResults();
-  }
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+        loadQuestion();
+    } else {
+        showResults();
+    }
 }
 
-function displayResults() {
-  const quizContent = document.getElementById("quiz-content");
-  quizContent.innerHTML = "<h2>Thank you for completing the quiz!</h2>";
-
-  let resultsHTML = "<h3>Your Answers:</h3>";
-  questions.forEach(q => {
-    resultsHTML += `<p><strong>${q.question}</strong><br>Your answer: ${q.answer ? q.answer : "No answer"}</p>`;
-  });
-  document.getElementById("results").innerHTML = resultsHTML;
+function showResults() {
+    document.getElementById('quiz-container').style.display = 'none';
+    document.getElementById('results').style.display = 'block';
 }
 
 function restartQuiz() {
-  currentQuestionIndex = 0;
-  questions.forEach(q => q.answer = null);
-  document.getElementById("results").innerHTML = "";
-  showQuestion();
+    currentQuestion = 0;
+    loadQuestion();
+    document.getElementById('quiz-container').style.display = 'block';
+    document.getElementById('results').style.display = 'none';
 }
 
-showQuestion();
-
+window.onload = loadQuestion;
 
