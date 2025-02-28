@@ -1,0 +1,134 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* General Styles */
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #e0f7fa, #e1bee7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  #container {
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  /* Pet Image Section */
+  #pet-container {
+    margin-bottom: 20px;
+  }
+  
+  #pet-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Quiz Section */
+  #quiz-container {
+    background: linear-gradient(45deg, #5a92ff, #0078d4);
+    border-radius: 20px;
+    padding: 20px;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  #quiz-content h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  #quiz-content ul {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 500px;
+  }
+  
+  #quiz-content li {
+    background: #fff;
+    color: #333;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  
+  #quiz-content li:hover {
+    background: #ff8ec7;
+    transform: translateY(-3px);
+  }
+  
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  /* Next Button */
+  #next-button {
+    background: #ff69b4;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.3s, transform 0.3s;
+  }
+  
+  #next-button:hover {
+    background: #ff8ec7;
+    transform: scale(1.05);
+  }
+  
+  /* Results Section */
+  #results {
+    background: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    color: #333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    text-align: left;
+  }
+  
+  #results h3 {
+    margin-bottom: 10px;
+  }
+  
+  #results p {
+    margin: 10px 0;
+  }
+  
+  /* Restart Button inside results */
+  #restart-button {
+    background: #5a92ff;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    margin-top: 15px;
+  }
+  
+  #restart-button:hover {
+    background: #0078d4;
+    transform: scale(1.05);
+  }
+
+  
